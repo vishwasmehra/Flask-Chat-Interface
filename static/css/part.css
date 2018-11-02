@@ -1,0 +1,72 @@
+body{
+    background: #00afbe;
+}
+
+.imgnew{  
+    padding-top: 50px;
+    position: absolute;
+    left: 630px;
+}
+
+#ip5 {
+    border-radius: 10px 10px 0px 0px;
+    border: 3px solid #ffffff;
+    padding-left: 10px;
+    width: 700px;
+    height: 400px;
+    overflow: auto;
+}
+.inputchat {
+    overflow: auto;
+    width: auto;
+    padding-top: 250px;
+    position: absolute;
+    
+   
+}
+#logo{
+    
+    height: 70px;
+    width: 70px;
+
+}
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+}
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+}
+.mm
+{
+    position: absolute;
+    right: 30px;
+    width: auto;
+    height: auto;
+    top: 350px;
+}
+#dic
+{
+    right: 20px;
+    width: auto;
+    height: auto;
+    padding-top: 500px;
+}
+.mm1
+{
+    border-radius: 10px 10px 10px 10px;
+    border: 3px solid #ffffff;
+    overflow: auto;
+    position: absolute;
+    right: 26px;
+    width: 390px;
+    height: 300px;
+    top: 485px;
+}
+.mm2
+{
+    position: absolute;
+    right: 30px;
+    width: 390px;
+    height: 42px;
+    top: 425px;
+}

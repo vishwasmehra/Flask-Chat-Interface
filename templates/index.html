@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css" integrity="sha384-osqezT+30O6N/vsMqwW8Ch6wKlMofqueuia2H7fePy42uC05rm1G+BUPSd2iBSJL" crossorigin="anonymous">
+    <meta charset="UTF-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script type="text/javascript" src="{{ url_for('static', filename = 'js/particles.js') }}"></script>
+ <title>Guru-Shishya | Your personal competitive place for learning and testing</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/part.css') }}">
+     
+</head>
+<body>
+     <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black" class="boot">
+
+        <li class="nav-item">
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" style="color: white"><h3>Guru-Shishya</h3></a>
+        </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto navbar-right">
+                <li class="nav-item active">
+                    <a class="nav-link" href="Guru-Shishya/" style="color: white"><h5>Home</h5><span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link disabled" href="login/" style="color: white"><h5>Login</h5></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    </div>
+    <div id="particles-js">
+        <div class="container">
+        <div class="imgnew">
+        <img src="{{ url_for('static', filename = 'img/FinaltrNS.png') }}" height="200" width="200">
+        </div>
+          <div class="form-group shadow-textarea inputchat">
+              <label for="exampleFormControlTextarea6">Write your message here</label>
+              <div class="form-control z-depth-1 bg-light" name="resiz" rows="100" cols="500" id="ip5"></div>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Type 'hi' to start chat!" aria-label="Recipient's username" aria-describedby="basic-addon2" id="result">
+                <div class="input-group-append">
+                    <button class="btn btn-dark" type="submit" id="chatyou">Submit</button>
+                </div>
+            </div>
+         </div>
+            
+            <label style=" right: 150px; top: 300px; position: absolute; font-size: 30px;color: white">Dictionary</label>
+        <div class="input-group mb-3 mm">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Enter word</span>
+            </div>
+            
+            <input type="text" class="form-control" aria-describedby="basic-addon2" id="wor">
+            
+            <span style=" font-size: 1rem;"><button type="button" class="btn btn-dark" id="spe" style="font-size: 1rem;">Meaning</button></span>
+            
+        </div>
+            
+        <div class="input-group mb-3 mm2">
+            <div class="form-control shadow-textarea z-depth-1 bg-light" style="overflow: auto;" name="resiz" rows="1" cols="5" id="pronun">
+            </div>
+            <span style="font-size: 1rem;"><button type="button" class="btn btn-dark" style="font-size: 1.1rem;" id="p">Voice</button></span>
+            
+        </div>
+            
+            <div class="form-control shadow-textarea z-depth-1 bg-light mm1" name="resiz" rows="100" cols="500" id="dicto" style="overflow: auto;">
+            </div>
+        </div>
+        <script>
+        $(document).ready(function () {
+            var voices = window.speechSynthesis.getVoices();
+            $('#chatyou').click(function () {
+                var word = $('#result').val();
+                $.ajax({
+                    url: "/get_reply",
+                    type: "get",
+                    data: {message: word},
+                    success: function (response) {
+                        $("#ip5").html(response.user_int + '<br>' + response.html);
+                    },
+                });
+            });
+            
+            $('#result').keypress(function(e) {
+                if(e.which == 13) {
+                var word = $('#result').val();
+                $.ajax({
+                    url: "/get_reply",
+                    type: "get",
+                    data: {message: word},
+                    success: function (response) {
+                        $("#ip5").html(response.user_int + '<br>' + response.html);
+                    },
+                });
+                }
+            });
+            $('#p').click(function () {
+                var word = $('#wor').val();
+                var voices = window.speechSynthesis.getVoices();
+                var speechMessage = new SpeechSynthesisUtterance();
+                speechMessage.voice = voices[3];
+                speechMessage.text  = word;
+                speechSynthesis.speak(speechMessage);
+            });
+                
+     
+            $('#spe').click(function () {
+                var word = $('#wor').val();
+                $.ajax({
+                    url: "/get_meaning",
+                    type: "get",
+                    data: {message: word},
+                    success: function (response) {
+                        $("#dicto").html(response.user_int + '<br>' + response.html);
+                    },
+                });
+            });
+            
+            $('#wor').keypress(function(e) {
+                if(e.which == 13) {
+                var word = $('#wor').val();
+                $.ajax({
+                    url: "/get_meaning",
+                    type: "get",
+                    data: {message: word},
+                    success: function (response) {
+                        $("#dicto").html(response.user_int + '<br>' + response.html);
+                    },
+                });
+                }
+            });
+                
+            $('#spe').click(function () {
+                var word = $('#wor').val();
+                $.ajax({
+                    url: "/get_pronun",
+                    type: "get",
+                    data: {message: word},
+                    success: function (response) {
+                        response.html=String(response.html);
+                        $("#pronun").html(response.user_int + ' : ' + response.html.split(',').join("-").replace(/[0-9]/g, ''));
+                    },
+                });
+            });
+            
+            $('#wor').keypress(function(e) {
+                if(e.which == 13) {
+                var word = $('#wor').val();
+                $.ajax({
+                    url: "/get_pronun",
+                    type: "get",
+                    data: {message: word},
+                    success: function (response) {
+                        response.html=String(response.html);
+                        $("#pronun").html(response.user_int + ': ' + response.html.split(',').join("-").replace(/[0-9]/g,''));
+                    },
+                });
+                }
+            });
+        });
+            
+    </script>
+        
+        <script type="text/javascript">
+        particlesJS.load('particles-js', "{{ url_for('static', filename = 'js/particlesjs-config.json') }}", function(){
+            
+            console.log('particles.json loaded....');
+        } );
+    
+    </script>
+</div>
+   
+</body>
+</html>
