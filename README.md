@@ -18,4 +18,11 @@
 ![2018-11-02 1](https://user-images.githubusercontent.com/26433878/47926384-6ef20800-dee6-11e8-9610-c3fa482c4c4e.png)
 
 
+### This shows the working of Dictionary module that returns the meaning, pronunciation and voice output on clicking "Voice" button.
+
+
+
+![2018-11-02 2](https://user-images.githubusercontent.com/26433878/47926652-17a06780-dee7-11e8-9e5a-c81bb51ff1be.png)
+
+
 
