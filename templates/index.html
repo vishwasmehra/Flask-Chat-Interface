@@ -7,14 +7,14 @@
    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- <script type="text/javascript" src="{{ url_for('static', filename = 'js/particles.js') }}"></script>
+ <script type="text/javascript" src="/static/js/particles.js"></script>
  <title>Guru-Shishya | Your personal competitive place for learning and testing</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/part.css') }}">
+    <link rel="stylesheet" type="text/css" href="/static/css/part.css">
      
 </head>
 <body>
-     <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black" class="boot">
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black" class="boot" style="list-style: none;">
 
         <li class="nav-item">
             
@@ -35,11 +35,32 @@
         </div>
     </nav>
     </div>
-    <div id="particles-js">
-        <div class="container">
-        <div class="imgnew">
-        <img src="{{ url_for('static', filename = 'img/FinaltrNS.png') }}" height="200" width="200">
-        </div>
+    
+    
+    
+    
+      <!-- Particles.js started -->
+    
+    
+    
+    
+   <div id="particles-js">
+     <div class="container-fluid" style="position: absolute;">
+         <div style="text-align: center;">
+           <div class="imgnew">
+               <img src="/static/img/FinaltrNS.png" height="200" width="200">
+           </div>
+         </div>
+         
+         
+         
+         <!-- Chat module Started -->
+         
+         
+         
+         
+       <div style="position: initial;">
+        <div class="col-md-6 col-lg-6 col-sm-6" style="float: left;">    
           <div class="form-group shadow-textarea inputchat">
               <label for="exampleFormControlTextarea6">Write your message here</label>
               <div class="form-control z-depth-1 bg-light" name="resiz" rows="100" cols="500" id="ip5"></div>
@@ -50,29 +71,41 @@
                 </div>
             </div>
          </div>
-            
-            <label style=" right: 150px; top: 300px; position: absolute; font-size: 30px;color: white">Dictionary</label>
-        <div class="input-group mb-3 mm">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Enter word</span>
-            </div>
-            
-            <input type="text" class="form-control" aria-describedby="basic-addon2" id="wor">
-            
-            <span style=" font-size: 1rem;"><button type="button" class="btn btn-dark" id="spe" style="font-size: 1rem;">Meaning</button></span>
-            
         </div>
+         
+        
+        
+        
+        <!-- Start of dictionary module -->
+        
+        
+        
+         
+        <div class="col-lg-4 col-md-4 col-sm-4" style="float: right; width: auto;">
+            <div>
+              <div style="font-size: 30px; color: white; margin-left: 30%;">Dictionary</div>
+                <div class="input-group mb-3 mm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Enter word</span>
+                    </div>
             
-        <div class="input-group mb-3 mm2">
-            <div class="form-control shadow-textarea z-depth-1 bg-light" style="overflow: auto;" name="resiz" rows="1" cols="5" id="pronun">
+                    <input type="text" class="form-control" aria-describedby="basic-addon2" id="wor">
+                    <span style=" font-size: 1rem;"><button type="button" class="btn btn-dark" id="spe" style="font-size: 1rem;">Meaning</button></span>
+                </div>
+            
+                <div class="input-group mb-3 mm2">
+                    <div class="form-control shadow-textarea z-depth-1 bg-light" style="overflow: auto;" name="resiz" rows="1" cols="5" id="pronun">
+                    </div>
+                    <span style="font-size: 1rem;"><button type="button" class="btn btn-dark" style="font-size: 1.1rem;" id="p">Voice</button></span>
+            
+                </div>
+                    <div class="form-control shadow-textarea z-depth-1 bg-light mm1" name="resiz" rows="100" cols="500" id="dicto" style="overflow: auto; height: 290px;">
+                    </div>
             </div>
-            <span style="font-size: 1rem;"><button type="button" class="btn btn-dark" style="font-size: 1.1rem;" id="p">Voice</button></span>
-            
         </div>
-            
-            <div class="form-control shadow-textarea z-depth-1 bg-light mm1" name="resiz" rows="100" cols="500" id="dicto" style="overflow: auto;">
-            </div>
-        </div>
+     </div>
+    </div>
+</div>   
         <script>
         $(document).ready(function () {
             var voices = window.speechSynthesis.getVoices();
@@ -169,13 +202,12 @@
     </script>
         
         <script type="text/javascript">
-        particlesJS.load('particles-js', "{{ url_for('static', filename = 'js/particlesjs-config.json') }}", function(){
+        particlesJS.load('particles-js', "/static/js/particlesjs-config.json", function(){
             
             console.log('particles.json loaded....');
         } );
     
     </script>
-</div>
    
 </body>
 </html>
